@@ -1,8 +1,7 @@
 # Jane: an AI financial controller that runs your money on autopilot
 
 **The goal.** Jane looks through your bank accounts securely through Plaid and builds a
-picture of who you are, such as a college student, a dog owner or a mother of three. Then it
-goes through every area of your money:
+picture of who you are. Then it goes through every area of your money:
 
 - subscriptions and bills
 - bank fees and idle cash
@@ -35,8 +34,8 @@ hours.
 - **Gives you the steps.** Each plan comes as a short card. In the beta, a "yes" gives you the
   exact steps to take yourself. Next, connectors will prefill and carry out those steps for
   you, in stages, starting read-only.
-- **Explains and answers.** A chat built on Claude answers questions using tools over your own
-  data. Every sentence passes a guardrail check before you see it.
+- **Explains and answers.** A chat answers questions using tools over your own data. Every
+  sentence passes a guardrail check before you see it.
 - **Shows the whole picture.** One home page covers net worth, safe-to-spend and what's coming
   up, with a page for each area. Large figures are hidden until you choose to show them.
 
@@ -69,13 +68,13 @@ Plaid / CSV / OFX ──► normalize ──► accounts and transactions (Postg
 ## Engineering highlights
 
 - **Deterministic money math.** The model never calculates a dollar figure. All numbers come
-  from tested code; Claude explains them and calls tools to look them up.
+  from tested code; The chat explains them and calls tools to look them up.
 - **One person's data stays theirs.** Every user-owned table carries a `user_id`, and every
   query goes through a helper scoped to the signed-in user. An access-proof test checks every
   route: someone holding another person's IDs gets nothing back.
 - **Secrets handled carefully.** Bank access tokens are encrypted with AES-256-GCM and never
   logged or returned. Uploaded files are parsed in memory and never stored raw.
-- **Guardrails on AI output.** Before anything is shown, Claude's replies are checked for
+- **Guardrails on AI output.** Before anything is shown, the chat's replies are checked for
   unsupported figures, promised outcomes, and investment, tax or legal advice.
 - **An audit trail.** Every sensitive event is written to an audit log.
 - **Tested heavily.** There are about 9,300 test cases across 1,360 unit and integration
@@ -86,7 +85,7 @@ Plaid / CSV / OFX ──► normalize ──► accounts and transactions (Postg
 
 ## How it was built
 
-Jane is built by two student founders working with a team of AI coding agents (Claude Code).
+Jane is built by two student founders working with a team of AI coding agents.
 The agents work in parallel, each on its own branch, under a written rulebook and product
 spec.
 
